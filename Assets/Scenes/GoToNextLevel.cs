@@ -3,41 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class GoToNext : MonoBehaviour
 {
+/*************  ✨ Codeium Command 🌟  *************/
     private void OnTriggerEnter(Collider box)
     {
-        // Проверяем, пересек ли триггер игрок
         if (box.CompareTag("Player"))
         {
-            UnlockLevel(); // Открываем следующий уровень
-            LoadNextScene(); // Загружаем следующую сцену
+            UnlockLevel(); // Разблокировка уровня
+            SceneManager.LoadScene(0); // Возврат в меню (индекс 0)
         }
     }
 
     public void UnlockLevel()
     {
-        int currentLevel = SceneManager.GetActiveScene().buildIndex; // Получаем индекс текущей сцены
-        int savedLevels = PlayerPrefs.GetInt("Levels", 1); // Получаем сохранённое количество открытых уровней
+        int currentLevel = SceneManager.GetActiveScene().buildIndex; // Получаем индекс текущего уровня
+        int savedLevels = PlayerPrefs.GetInt("Levels", 1); // Получаем количество открытых уровней
 
-        // Если текущий уровень больше или равен сохранённому
-        if (currentLevel >= savedLevels)
+        // Разблокировка следующего уровня
+        if (currentLevel == savedLevels) // Если игрок завершил текущий уровень
         {
-            PlayerPrefs.SetInt("Levels", currentLevel + 1); // Сохраняем следующий уровень
-            PlayerPrefs.Save(); // Сохраняем изменения в PlayerPrefs
-        }
-    }
-
-    private void LoadNextScene()
-    {
-        // Переход на следующий уровень
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex); // Загружаем следующую сцену
-        }
-        else
-        {
-            // Если следующая сцена не существует, вернемся в меню или обработаем это
-            SceneManager.LoadScene(0); // Переход на меню
+            PlayerPrefs.SetInt("Levels", savedLevels + 1); // Разблокируем следующий уровень
+            PlayerPrefs.Save(); // Сохраняем изменения
+            Debug.Log($"Теперь открыт уровень {savedLevels + 1}.");
         }
     }
 }
