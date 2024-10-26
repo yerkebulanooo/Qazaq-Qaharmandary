@@ -96,11 +96,11 @@ public class GameManager : MonoBehaviour
         // Запланируем завершение сцены
         if (score >= 100)
         {
-            Invoke("LoadMainMenu", 3f); // Переход на главную сцену
+            Invoke("LoadMainMenu", 1f); // Переход на главную сцену
         }
         else
         {
-            Invoke("RestartScene", 3f); // Перезагрузка сцены
+            Invoke("RestartScene", 1f); // Перезагрузка сцены
         }
     }
 
