@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GoToNext : MonoBehaviour
 {
+
 /*************  ✨ Codeium Command 🌟  *************/
     private void OnTriggerEnter(Collider box)
     {
