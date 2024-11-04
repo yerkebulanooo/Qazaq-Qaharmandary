@@ -1,0 +1,5 @@
+C:/Users/YerzatPazyl/Desktop/gfd/Batyr_Unity_Game/Batyr_Unity_Games/.utmp/RelWithDebInfo/2e4s455g/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/YerzatPazyl/Desktop/gfd/Batyr_Unity_Game/Batyr_Unity_Games/.utmp/RelWithDebInfo/2e4s455g/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/YerzatPazyl/Desktop/gfd/Batyr_Unity_Game/Batyr_Unity_Games/.utmp/RelWithDebInfo/2e4s455g/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/YerzatPazyl/Desktop/gfd/Batyr_Unity_Game/Batyr_Unity_Games/.utmp/RelWithDebInfo/2e4s455g/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/YerzatPazyl/Desktop/gfd/Batyr_Unity_Game/Batyr_Unity_Games/.utmp/RelWithDebInfo/2e4s455g/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

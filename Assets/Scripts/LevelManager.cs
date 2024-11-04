@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         // Сбрасываем PlayerPrefs для отладки (удалите или закомментируйте в финальной версии)
-        PlayerPrefs.DeleteAll(); // Удаляет все сохраненные данные (для отладки)
+        // PlayerPrefs.DeleteAll(); // Удаляет все сохраненные данные (для отладки)
 
         // Получаем количество открытых уровней, по умолчанию 1
         LevelUnlock = PlayerPrefs.GetInt("Levels", 1); 

@@ -15,35 +15,30 @@ public class PlayerController3 : MonoBehaviour
 
     private bool isJumping = false;
 
-    // Animator для анимации
     private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = true; // Включаем гравитацию
-        animator = GetComponent<Animator>(); // Получаем компонент Animator
+        rb.useGravity = true;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Постоянное движение вперед
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        // Проверка свайпов
         CheckSwipe();
 
-        // Перемещение между дорожками
         if (swipeLeft) MoveLane(-1);
         if (swipeRight) MoveLane(1);
 
-        // Прыжок при свайпе вверх, если игрок не в воздухе
         if (swipeUp && !isJumping)
         {
             Jump();
         }
 
-        UpdateAnimations(); // Обновление анимаций
+        UpdateAnimations();
     }
 
     void CheckSwipe()
@@ -88,27 +83,24 @@ public class PlayerController3 : MonoBehaviour
 
     void Jump()
     {
-        isJumping = true; // Устанавливаем флаг прыжка
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); // Сбрасываем вертикальную скорость перед прыжком
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // Применяем силу прыжка
-        animator.SetTrigger("Jump"); // Устанавливаем триггер для анимации прыжка
-        Debug.Log("Player jumped!");
+        isJumping = true;
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        animator.SetBool("IsJumping", true);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        // Проверка приземления
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isJumping = false; // Устанавливаем флаг приземления
-            animator.SetBool("Run", true); // Запускаем анимацию бега
-            Debug.Log("Player landed!");
+            isJumping = false;
+            animator.SetBool("IsJumping", false);
         }
     }
 
     void UpdateAnimations()
     {
-        // Проверяем, движется ли игрок, чтобы установить правильную анимацию
-        animator.SetBool("Run", rb.linearVelocity.magnitude > 0 && !isJumping); // Анимация бега только при движении
+        bool isMoving = rb.linearVelocity.magnitude > 0.05f && !isJumping;
+        animator.SetBool("IsRunning", isMoving);
     }
 }
