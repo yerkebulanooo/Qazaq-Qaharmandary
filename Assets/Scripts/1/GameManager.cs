@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     private int score = 0; // Очки игрока
     private bool isGameActive = true; // Статус игры
     private float timeRemaining; // Оставшееся время
-    // public GoToNextLevel goToNextLevel;
+
+
 
     void Awake()
     {
@@ -90,6 +91,10 @@ public class GameManager : MonoBehaviour
         int currentLevel = SceneManager.GetActiveScene().buildIndex; // Получаем индекс текущего уровня
         int savedLevels = PlayerPrefs.GetInt("Levels", 1); // Получаем количество открытых уровней
         // Удаляем или скрываем Canvas и другие элементы
+
+
+        // Удаляем или скрываем Canvas и другие элементы
+
         if (canvas != null)
         {
             canvas.gameObject.SetActive(false); // Деактивируем Canvas
@@ -98,13 +103,16 @@ public class GameManager : MonoBehaviour
         // Запланируем завершение сцены
         if (score >= 100)
         {
-           if (currentLevel == savedLevels) // Если игрок завершил текущий уровень
+
+               if (currentLevel == savedLevels) // Если игрок завершил текущий уровень
+
         {
             PlayerPrefs.SetInt("Levels", savedLevels + 1); // Разблокируем следующий уровень
             PlayerPrefs.Save(); // Сохраняем изменения
             Debug.Log($"Теперь открыт уровень {savedLevels + 1}.");
-        }
-            // GoToNextLevel.Instance.UnlockLevel();
+
+        }   
+
             Invoke("LoadMainMenu", 1f); // Переход на главную сцену
         }
         else

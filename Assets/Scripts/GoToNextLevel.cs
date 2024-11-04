@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoToNextLevel : MonoBehaviour
+
+public class GoToNext : MonoBehaviour
 {
 
-    public static GoToNextLevel Instance { get; private set; }
 /*************  ✨ Codeium Command 🌟  *************/
     private void OnTriggerEnter(Collider box)
     {
